@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="myApp.js"></script>
+  <script src="myCtrl.js"></script>
+
+  <body>
+    <div
+      data-ng-app="myApp"
+      data-ng-controller="myCtrl"
+      w3-test-directive
+      data-ng-init="myCol='lightblue'; 
+    quantity = 1; cost = 5; firstName = 'John'; lastName = 'Doe'; 
+    person={firstName: 'John', lastName: 'Doe'}; points=[1, 15, 19, 2, 40]; names=[
+    {name:'Jani',country:'Norway'},
+    {name:'Hege',country:'Sweden'},
+    {name:'Kai',country:'Denmark'}]"
+    >
+      First Name: <input type="text" data-ng-model="firstName" /> Last Name:
+      <input type="text" data-ng-model="lastName" />
+      <br />
+      Full Name: {{ firstName + " " + lastName }}
+
+      <p>My first expression: {{ 5 + 5 }}</p>
+
+      <input style="background-color: {{ myCol }}" data-ng-model="myCol" />
+
+      <p>Total in dollar: {{ quantity * cost }}</p>
+
+      <p>Total in dollar: <span data-ng-bind="quantity * cost"></span></p>
+
+      <p>The name is <span data-ng-bind="firstName + ' ' + lastName"></span></p>
+
+      <p>The name is {{ person.lastName }}</p>
+
+      <p>The name is <span data-ng-bind="person.lastName"></span></p>
+
+      <p>The third result is {{ points[2] }}</p>
+
+      <p>The third result is <span data-ng-bind="points[2]"></span></p>
+
+      <ul>
+        <li data-ng-repeat="x in names">
+          {{ x.name + ', ' + x.country }}
+        </li>
+      </ul>
+
+      <table>
+        <tr>
+          <th>
+            Nomes
+          </th>
+          <th>
+            Country
+          </th>
+        </tr>
+        <tr data-ng-repeat="x in names">
+          <td>
+            {{ x.name }}
+          </td>
+          <td>
+            {{ x.country }}
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      //   app.directive("w3TestDirective", function() {
+      //     return {
+      //       template: "I was made in a directive constructor!"
+      //     };
+      //   });
+    </script>
+  </body>
+</html>
